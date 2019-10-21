@@ -1,0 +1,35 @@
+<!-- Formulário -->
+
+<form>
+    <input type="text" placeholder="Produto" class="form-control" [(ngModel)]="produto.produto" name="produto">
+    <input type="text" placeholder="Marca" class="form-control" [(ngModel)]="produto.marca" name="marca">
+    <input type="text" placeholder="Valor" class="form-control" [(ngModel)]="produto.valor" name="valor">
+    <button class="btn btn-primary" *ngIf="btnCadastrar" (click)="cadastrar()">Cadastrar</button>
+    <button class="btn btn-success" *ngIf="btnEditar" (click)="alterar()">Alterar</button>
+    <button class="btn btn-danger" *ngIf="btnEditar" (click)="excluir()">Excluir</button>
+    <button class="btn btn-secondary" *ngIf="btnEditar" (click)="cancelarEdicaoProduto()">Cancelar</button>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Código</th>
+            <th>Produto</th>
+            <th>Marca</th>
+            <th>Valor</th>
+            <th>Editar</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let p of produtos; let indice = index">
+            <td>{{indice + 1}}</td>
+            <td>{{p.produto}}</td>
+            <td>{{p.marca}}</td>
+            <td>{{p.valor}}</td>
+            <td><button class="btn btn-success" (click)="editarProduto(indice)">Editar</button></td>
+        </tr>
+    </tbody>
+
+
+</table>
